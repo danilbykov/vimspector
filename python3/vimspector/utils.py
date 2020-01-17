@@ -501,3 +501,8 @@ def memoize( func ):
 @memoize
 def Exists( expr ):
   return int( vim.eval( f'exists( "{ expr }" )' ) )
+
+
+def GetBufferFiletypes( buf ):
+  ft = ToUnicode( vim.eval( f"getbufvar( {buf.number}, '&ft' )" ) )
+  return ft.split( '.' )
